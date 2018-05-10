@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/default.xhtml">
+
+    <ui:define name="content">
+     <h:form>
+    		<h:dataTable value="#{loadGoldenBookEntries}" var="entry" border="2" >
+        		<h:column>
+        			 <f:facet name="header">Content</f:facet>
+    			#{entry.content}
+  			</h:column>
+        		<h:column>
+        			 <f:facet name="header">Action</f:facet>
+        			 <h:commandButton value = "Delete" action="#{goldenBookEntryController.deleteEntry(entry)}" onclick="if (! confirm('Really delete this?') ) { return false;}; return true; ">                
+               </h:commandButton>
+  			</h:column>
+       </h:dataTable>
+      </h:form>
+    </ui:define>
+</ui:composition>

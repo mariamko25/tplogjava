@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+
+    <ui:define name="content">
+        <ui:repeat value="#{loadGoldenBookEntries}" var="entry">
+            <div class="well-large">
+                <div class="item">#{entry.content}</div>
+                
+                <h:outputText rendered="#{entry.note ne -1}" value="On #{entry.createdAt}, by #{entry.author},feedback #{entry.note}. " />
+                <h:outputText rendered="#{entry.note eq -1}" value="On #{entry.createdAt}, by #{entry.author}." />
+	            <div class="tags">Tags:
+	            <ui:repeat value="#{entry.tags}" var="value">| #{value} | </ui:repeat>
+	            </div>
+            </div>
+        </ui:repeat>
+    </ui:define>
+</ui:composition>

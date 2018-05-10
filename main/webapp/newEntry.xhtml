@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/default.xhtml">
+
+    <ui:define name="content">
+        <h:messages/>
+        Create Entry :<br/>
+        <h:form>
+            Message : <h:inputTextarea value="#{newBookEntry.content}"></h:inputTextarea><br/>
+            <h:selectOneMenu id="selectOneMenu" value="#{newBookEntry.note}">
+			<f:selectItem itemValue="-1" itemLabel="-- Select note --"  />
+			<f:selectItem itemValue = "0" itemLabel = "0" /> 
+            <f:selectItem itemValue = "1" itemLabel = "1" /> 
+            <f:selectItem itemValue = "2" itemLabel = "2" /> 
+            <f:selectItem itemValue = "3" itemLabel = "3" /> 
+            <f:selectItem itemValue = "4" itemLabel = "4" /> 
+            <f:selectItem itemValue = "5" itemLabel = "5" />   
+            <f:selectItem itemValue = "6" itemLabel = "6" />  
+            <f:selectItem itemValue = "7" itemLabel = "7" />  
+            <f:selectItem itemValue = "8" itemLabel = "8" />  
+            <f:selectItem itemValue = "9" itemLabel = "9" />  
+            <f:selectItem itemValue = "10" itemLabel = "10" />  
+         	</h:selectOneMenu><br/>  
+         	
+         	<ui:repeat value="#{newBookEntry.tags}" varStatus="status">            
+                <h:inputTextarea value="#{newBookEntry.tags[status.index]}" />
+            </ui:repeat><br/>  
+            <h:commandButton value="Save" action="#{goldenBookEntryController.insertNewEntry}"/>
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>
